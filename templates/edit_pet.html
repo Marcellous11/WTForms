@@ -1,0 +1,20 @@
+{% extends 'index.html'%}
+
+<body>
+    {%block content%}
+    <form action="" method="POST">
+        <h2>Edit {{pet.name}}</h2>
+        {{form.hidden_tag()}}
+        {%for field in form if field.widget.input_type != 'hidden'%}
+        <p>
+            {{field.label}}
+            {{field}}
+        </p>
+        {%endfor%}
+        <button class="btn btn-success">Make Changes</button>
+    </form>
+
+
+    <a class="btn btn-danger" href="/{{pet.id}}">Cacnel</a>
+    {%endblock%}
+</body>

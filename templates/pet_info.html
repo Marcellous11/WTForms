@@ -1,0 +1,34 @@
+{% extends 'index.html'%}
+
+<body>
+    {% block content%}
+    <h1>{{pet.name}}</h1>
+    <div id="pet_profile_main_container" class="row">
+        <div id="pet_profile_info_container" class="col-sm-6">
+            <h2>General Information</h2>
+            <ul>
+                <li><b>Species</b>: {{pet.species}}</li>
+                <li><b>Age</b>: {{pet.age}}</li>
+                <li><b>Notes</b>: {{pet.notes}}</li>
+                {%if pet.available%}
+                <li><b>Available</b>: YES!!</li>
+                {%else%}
+                <li><b>Available</b>: NO :(</li>
+                {%endif%}
+            </ul>
+
+        </div>
+        <div class="col-sm-6" id="pet_profile_img_container">
+            <img id="pet_profile_pic" src="{{pet.photo_url}}" alt="">
+        </div>
+    </div>
+
+
+    <form action="">
+        <button class="btn" formaction="/">Back to Pets</button>
+        <button class="btn btn-outline-info" formaction="/edit/{{pet.id}}"> Edit</button>
+        <button class="btn btn-danger" formaction="/{{pet.id}}/delete" formmethod="POST">Delete Pet</button>
+    </form>
+
+    {%endblock%}
+</body>
